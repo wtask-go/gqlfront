@@ -569,12 +569,11 @@
       const wsProto = location.protocol == 'https:' ? 'wss:' : 'ws:'
 
       GraphQLPlayground.init(root, {
-        "workspaceName": "{{ .title }}",
         "endpoint": location.protocol + '//' + location.host + "{{ .endpoint }}",
         "subscriptionEndpoint": wsProto + '//' + location.host + "{{ .endpoint }}",
         // "sessionEndpoint": "", // TODO Explore this option
         // "shareEnabled": true,
-        "setTitle": false,
+        "setTitle": false, // protects from changing the custom page title by react-components
         "settings": {
           "request.credentials": "same-origin"
         }
