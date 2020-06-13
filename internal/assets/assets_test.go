@@ -1,4 +1,4 @@
-package tests
+package assets_test
 
 import (
 	"testing"

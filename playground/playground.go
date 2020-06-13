@@ -1,4 +1,4 @@
-// Package playground contains http handler to display
+// Package playground contains http handler to display GraphQL Playground page.
 package playground
 
 import (
@@ -73,6 +73,7 @@ func Handler(endpoint string, options ...Option) http.HandlerFunc {
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html; charset=utf-8")
-		_, _ = buf.WriteTo(w)
+		w.Write(buf.Bytes())
+		// _, _ = buf.WriteTo(w)
 	}
 }
