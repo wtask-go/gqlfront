@@ -62,7 +62,7 @@ func Handler(endpoint string, options ...Option) http.HandlerFunc {
 	for _, o := range options {
 		o(&data)
 	}
-	buf := bytes.Buffer{}
+	buf := &bytes.Buffer{}
 	err := playground.Execute(buf, map[string]string{
 		"title":    data.Title,
 		"version":  data.ReactBuild,
@@ -73,6 +73,6 @@ func Handler(endpoint string, options ...Option) http.HandlerFunc {
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html; charset=utf-8")
-		buf.WriteTo(w)
+		_, _ = buf.WriteTo(w)
 	}
 }
