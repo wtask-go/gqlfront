@@ -1,5 +1,5 @@
 // +build ignore
 
-//go:generate go generate ./internal/assets/package.go
+//go:generate go generate ./internal/assets/assets.go
 
 package gqlfront
