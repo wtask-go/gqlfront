@@ -47,7 +47,7 @@ const (
 )
 
 var (
-	playground = template.Must(assets.Playground())
+	playground = template.Must(assets.Playground()) // no panic if assets tests are successful
 )
 
 // Handler builds http handler to display GraphQL Playground page,
@@ -74,6 +74,5 @@ func Handler(endpoint string, options ...Option) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html; charset=utf-8")
 		w.Write(buf.Bytes())
-		// _, _ = buf.WriteTo(w)
 	}
 }
