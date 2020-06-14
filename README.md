@@ -16,3 +16,15 @@ go generate tools.go
 ```cmd
 go generate assets.go
 ```
+
+## Install
+
+The useful code is located inside subpackages of this module, so import directly needed subpackage instead importing the root module:
+
+```cmd
+go get github.com/wtask-go/gqlfront/playground
+```
+
+## Further development
+
+GraphiQL will probably be added.
