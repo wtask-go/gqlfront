@@ -43,4 +43,4 @@ jobs:
         uses: golangci/golangci-lint-action@v1
         with:
           # See https://github.com/marketplace/actions/run-golangci-lint for additional params
-          version: v1.27.0
+          version: v1.27
