@@ -30,17 +30,17 @@ jobs:
 
       #    - name: Build
       #      run: go build -v .
-
       - name: Run module tests
         run: go test -v ./...
 
   lint:
-    name: Run golangci-lint
+    name: Check code style and rules
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: golangci-lint
+
+      - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v1
         with:
           # See https://github.com/marketplace/actions/run-golangci-lint for additional params
-          version: v1.26
+          version: v1.27.0
