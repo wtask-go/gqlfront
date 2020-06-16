@@ -179,6 +179,10 @@ issues:
       text: "^Error return value of .* is not checked$"
 
     - linters:
+        - gosec
+      text: "^G104: Errors unhandled"
+
+    - linters:
         - govet
       text: "composite literal uses unkeyed fields$"
 
