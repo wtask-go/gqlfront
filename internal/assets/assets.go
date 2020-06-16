@@ -21,6 +21,7 @@ func compileAsset(name string) (*template.Template, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	return template.New(name).Parse(bytes.NewBuffer(data).String())
 }
 

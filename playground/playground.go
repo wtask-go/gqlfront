@@ -26,6 +26,7 @@ func WithReactBuild(version string) Option {
 	if version != "" && !strings.HasPrefix(version, "@") {
 		version = "@" + version
 	}
+
 	return func(s *settings) {
 		s.ReactBuild = version
 	}
@@ -59,18 +60,22 @@ func Handler(endpoint string, options ...Option) http.HandlerFunc {
 		ReactBuild: "@" + DefaultReactBuild,
 		Endpoint:   endpoint,
 	}
+
 	for _, o := range options {
 		o(&data)
 	}
+
 	buf := &bytes.Buffer{}
 	err := playground.Execute(buf, map[string]string{
 		"title":    data.Title,
 		"version":  data.ReactBuild,
 		"endpoint": data.Endpoint,
 	})
+
 	if err != nil {
 		panic(err)
 	}
+
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html; charset=utf-8")
 		w.Write(buf.Bytes())
